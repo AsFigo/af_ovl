@@ -1,0 +1,12 @@
+# Simulation artifacts
+af_tests/**/*.vvp
+af_tests/**/*.vcd
+af_tests/**/*.log
+
+# Verilator build directory and scratch files
+af_ovl/sv2012/obj_dir/
+
+# Editor swap/backup files
+*.swp
+*.swo
+*~
