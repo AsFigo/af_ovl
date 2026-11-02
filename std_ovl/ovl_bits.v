@@ -47,7 +47,7 @@
 
 `ifdef OVL_VERILOG
   `include "./sv2012/af_ovl_bits_logic.v"
-  assign fire = {fire_2state, fire_xcheck, fire_cover};
+  assign fire = {fire_cover, fire_xcheck, fire_2state};
 `endif
 
 `ifdef OVL_SVA
