@@ -35,15 +35,6 @@ What is common to all four
   checks and reports exactly as for an assertion. Upstream SVA turns these
   into ``assume property`` for formal tools.
 
-.. warning::
-
-   **Known issue: fire bit order.** The four AsFigo wrappers assign
-   ``fire = {fire_2state, fire_xcheck, fire_cover}``, which puts the rule
-   violation on ``fire[2]``. The upstream wrappers (for example
-   ``ovl_always``) use ``{fire_cover, fire_xcheck, fire_2state}``, matching
-   ``OVL_FIRE_2STATE`` = 0. Until this is fixed, read the rule violation of
-   these four checkers from ``fire[2]`` and coverage from ``fire[0]``.
-
 ----
 
 .. _enh_ovl_bits:
