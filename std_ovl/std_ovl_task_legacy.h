@@ -1,5 +1,6 @@
 // Accellera Standard V2.8.1 Open Verification Library (OVL).
 // Accellera Copyright (c) 2005-2014. All rights reserved.
+// Modified by AsFigo: $display format adds `__FILE__`/`__LINE__` (from ivl_uvm).
 
 `ifdef OVL_SYNTHESIS
 `else
