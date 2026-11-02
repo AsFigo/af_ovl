@@ -10,3 +10,6 @@ af_ovl/sv2012/obj_dir/
 *.swp
 *.swo
 *~
+
+# Sphinx build output
+docs/build/
