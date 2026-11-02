@@ -1,0 +1,24 @@
+af_ovl
+Copyright (c) 2026 AsFigo
+
+This product is derived from the Accellera Standard Open Verification
+Library (OVL), Version 2.8.1.
+
+    Accellera Standard V2.8.1 Open Verification Library (OVL).
+    Accellera Copyright (c) 2005-2014. All rights reserved.
+
+The original OVL 2.8.1 sources were published by Accellera Systems
+Initiative Inc. under the Apache License, Version 2.0, as stated in the
+"License and Statement of Use of Accellera's Open Verification Library"
+(https://accellera.org/downloads/standards/ovl/ovl-statement-of-use).
+Original copyright notices in each source file are retained unchanged.
+
+Files modified by AsFigo carry an additional
+"Modified by AsFigo" note in their header. Files that are
+new in this project are copyright AsFigo and are licensed
+under the Apache License, Version 2.0.
+
+This project is not affiliated with, sponsored by, or endorsed by
+Accellera Systems Initiative. "Accellera" is a trademark of Accellera
+Systems Initiative Inc. All other trademarks are the property of their
+respective owners.
