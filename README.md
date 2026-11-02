@@ -53,7 +53,8 @@ See `af_tests/ovl_*/` for working pass/fail examples with Makefiles.
 
 The original Accellera OVL Library Reference Manual is Accellera's document
 and is not redistributed in this repository. Please obtain it from Accellera.
-Documentation for af_ovl-specific changes lives in `docs/` and is written by
+
+Documentation for af_ovl is at https://asfigo.github.io/af_ovl/ (sources in docs/) and is written by
 AsFigo.
 
 ## Contributing
