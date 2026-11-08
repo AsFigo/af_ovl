@@ -19,7 +19,7 @@
   // enable check matches Accellera SVA: covered_fire_combo = (enable===1 && !X/Z && test_expr===1)
   wire fire_2state_1 = (enable === 1'b1 && !$isunknown(test_expr) && (test_expr == 1'b1));
   bit  fire_2state;
-  always_ff @(posedge clk) begin
+  always @(posedge clk) begin
     if (`OVL_RESET_SIGNAL == 1'b0) begin
       fire_2state <= 1'b0;
     end
@@ -44,7 +44,7 @@
     `else
       wire fire_xcheck_1 = $isunknown(test_expr);
       bit  fire_xcheck;
-      always_ff @(posedge clk) begin
+      always @(posedge clk) begin
         if (`OVL_RESET_SIGNAL == 1'b0) begin
           fire_xcheck <= 1'b0;
         end

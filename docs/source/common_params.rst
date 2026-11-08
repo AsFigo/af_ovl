@@ -100,6 +100,7 @@ The ``fire`` output
 
 ``fire`` is driven only with ``-DOVL_VERILOG``. With ``-DOVL_SVA`` the
 upstream wrappers tie it to 0 and report through SVA action blocks only.
+Checkers with no plain-Verilog logic yet tie ``fire`` to 0 with ``-DOVL_VERILOG``.
 
 Compile-time macros
 -------------------
@@ -143,3 +144,33 @@ Without ``OVL_UVM``, a violation prints:
 where ``<assert_name>`` is the checker name in capitals (for example
 ``OVL_BITS``) and ``<msg>`` is the instance's ``msg`` parameter. The simulator
 adds the file, line, time and scope.
+
+.. _not_implemented_warning:
+
+Warnings: ``af_ovl_warn_t``
+---------------------------
+
+AsFigo warnings go through ``af_ovl_warn_t`` (``af_ovl/af_std_ovl_task.h``). It is
+separate from ``std_ovl_task.h``, so it works with or without ``OVL_LEGACY_TASK``.
+Without ``OVL_UVM`` it prints, with ``$warning``:
+
+.. code-block:: text
+
+   OVL_WARNING : <assert_name> : <msg> : <scope> : <warning text>
+
+The ``<msg>`` field is left out when ``msg`` is still the default
+(``OVL_MSG_DEFAULT``, ``"VIOLATION"``), since "VIOLATION" reads wrongly on a warning.
+
+With ``OVL_UVM`` it calls ``uvm_warning`` with ``<assert_name>`` as the ID.
+It is always a warning: it ignores ``severity_level``, does not add to the error
+count, and is not limited by ``OVL_MAX_REPORT_ERROR``. Nothing is printed with
+``OVL_SYNTHESIS``.
+
+Its current use: each instance of a checker with no plain-Verilog logic yet warns
+once at time 0, unless neither ``OVL_ASSERT_ON`` nor ``OVL_COVER_ON`` is defined or
+``property_type`` is ``OVL_IGNORE``:
+
+.. code-block:: text
+
+   OVL_WARNING : OVL_FIFO : tb.u_fifo.af_ovl_warn_t : No OVL_VERILOG logic; checker never fires.
+       To request support, open an issue at https://github.com/AsFigo/af_ovl/issues naming this checker

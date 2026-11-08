@@ -12,6 +12,9 @@ Defaults named ``OVL_*`` are Verilog macros from ``std_ovl/std_ovl_defines.h``
 
 **Status key**: whether the checker has plain-Verilog logic that runs on Icarus
 (``-DOVL_VERILOG``), and whether AsFigo has pass/fail tests for it in ``af_tests/``.
+Checkers marked "No plain-Verilog logic yet" print one ``OVL_WARNING`` per instance at
+time 0 (see :ref:`not_implemented_warning`) and tie ``fire`` to 0. To ask for one of them,
+open an issue at https://github.com/AsFigo/af_ovl/issues.
 
 ----
 
@@ -107,7 +110,7 @@ ovl_arbiter
 
 Grants on ``gnts`` must follow requests on ``reqs`` under the selected arbitration rule, priority and latency limits.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -362,7 +365,7 @@ ovl_crc
 
 The checker computes a CRC over ``test_expr`` while ``valid`` is high, restarting on ``initialize``. When ``compare`` is asserted, the value on ``crc`` must match.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -634,7 +637,7 @@ ovl_fifo
 
 FIFO enqueue/dequeue rules: no overflow or underflow, correct ``full``/``empty`` flags, and optional data checks.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -877,7 +880,7 @@ ovl_hold_value
 
 When ``test_expr`` equals ``value``, it must keep that value for a number of cycles within ``[min, max]``.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -1016,7 +1019,7 @@ ovl_memory_async
 
 Address-range, initialisation and read/write rules for an asynchronous memory.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -1097,7 +1100,7 @@ ovl_memory_sync
 
 Address-range, initialisation, conflict and read/write rules for a synchronous memory with separate read and write clocks.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -1188,7 +1191,7 @@ ovl_multiport_fifo
 
 FIFO rules for a FIFO with several enqueue and dequeue ports.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -1501,7 +1504,7 @@ ovl_next_state
 
 When ``test_expr`` equals ``curr_state``, it must move to one of the ``next_state`` values, within the hold limits.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -1560,7 +1563,7 @@ ovl_no_contention
 
 Shared bus with ``num_drivers`` drivers: at most one bit of ``driver_enables`` high at a time, no X or Z on ``test_expr`` while a driver is enabled, and between ``min_quiet`` and ``max_quiet`` idle cycles when the bus changes driver.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -2034,7 +2037,7 @@ ovl_reg_loaded
 
 After ``start_event``, ``dest_expr`` must be loaded with ``src_expr`` within the window set by ``start_count``/``end_count`` or ``end_event``.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -2092,7 +2095,7 @@ ovl_req_ack_unique
 
 Each ``req`` must get exactly one ``ack`` within ``[min_cks, max_cks]`` cycles.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -2144,7 +2147,7 @@ ovl_req_requires
 
 A request started by ``req_trigger`` must be followed by ``req_follower``, then the ``resp_leader``/``resp_trigger`` response.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -2200,7 +2203,7 @@ ovl_stack
 
 Stack push/pop rules: no overflow or underflow, correct ``full``/``empty`` flags, latency and data checks.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -2421,7 +2424,7 @@ ovl_valid_id
 
 Each ``returned_id`` must match an outstanding ``issued_id`` and return within ``[min_cks, max_cks]``, with flush and instance-count limits.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -2496,7 +2499,7 @@ ovl_value
 
 ``test_expr`` must match one of the values in ``vals`` (or, with ``disallow``, must not match any of them).
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -2549,7 +2552,7 @@ ovl_value_coverage
 
 Coverage of the values ``test_expr`` takes, leaving out the values in ``is_not``.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -2797,7 +2800,7 @@ ovl_xproduct_bit_coverage
 
 Cross-product coverage of the bits of ``test_expr1`` and ``test_expr2``.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1
@@ -2851,7 +2854,7 @@ ovl_xproduct_value_coverage
 
 Cross-product coverage of the values of ``test_expr1`` and ``test_expr2``.
 
-**Status**: No plain-Verilog logic yet: elaborates on Icarus but never fires
+**Status**: No plain-Verilog logic yet: prints a warning at time 0 and never fires (``fire`` tied low)
 
 .. list-table:: Parameters
    :header-rows: 1

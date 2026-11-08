@@ -7,7 +7,7 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 // SV-2012 rewrite:
-//   - automatic tasks  : eliminates "must be automatic" warning from always_ff
+//   - automatic tasks  : re-entrant; each call gets its own local storage
 //   - string err_msg   : no 128-char truncation; runtime-variable content possible
 //   - $error/$fatal/$warning/$info : proper EDA severity semantics
 //   - OVL_FINISH_OFF   : ifdef guard inside FATAL case; $error used instead of $fatal

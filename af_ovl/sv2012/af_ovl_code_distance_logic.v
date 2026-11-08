@@ -39,7 +39,7 @@
                                    ($countones(hd_vec) < min || $countones(hd_vec) > max);
 
   bit fire_2state;
-  always_ff @(posedge clk) begin
+  always @(posedge clk) begin
     if (`OVL_RESET_SIGNAL == 1'b0) begin
       fire_2state <= 1'b0;
     end
@@ -65,7 +65,7 @@
       wire fire_xcheck_2 = $isunknown(test_expr2);
       bit  fire_xcheck;
 
-      always_ff @(posedge clk) begin
+      always @(posedge clk) begin
         if (`OVL_RESET_SIGNAL == 1'b0) begin
           fire_xcheck <= 1'b0;
         end
