@@ -1,5 +1,9 @@
 // Accellera Standard V2.8.1 Open Verification Library (OVL).
 // Accellera Copyright (c) 2005-2014. All rights reserved.
+// Modified by AsFigo: warn and tie fire low when no OVL_VERILOG logic.
+// Copyright (c) 2026 AsFigo (https://www.asfigo.com)
+// Authors: Ajeetha Kumari Venkatesan, Srinivasan Venkataramanan
+// SPDX-License-Identifier: Apache-2.0
 
 `include "std_ovl_defines.h"
 
@@ -31,6 +35,10 @@
   `include "std_ovl_cover.h"
   `include "std_ovl_task.h"
   `include "std_ovl_init.h"
+
+`ifdef OVL_VERILOG
+  `include "af_ovl_not_implemented.v"
+`endif
 
 `ifdef OVL_SVA
   `include "./sva05/ovl_hold_value_logic.sv"

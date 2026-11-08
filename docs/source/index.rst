@@ -50,6 +50,9 @@ Repository layout
      - Upstream plain-Verilog checker logic.
    * - ``std_ovl/sva05/``
      - Upstream SVA checker logic (``-DOVL_SVA``).
+   * - ``af_ovl/``
+     - AsFigo shared files: ``af_std_ovl_task.h`` (``af_ovl_warn_t``) and
+       ``af_ovl_not_implemented.v`` (warning for checkers with no plain-Verilog logic).
    * - ``af_ovl/sv2012/``
      - AsFigo plain-Verilog logic for checkers that had only SVA logic upstream.
    * - ``af_tests/``
